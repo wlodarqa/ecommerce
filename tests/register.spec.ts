@@ -89,20 +89,13 @@ test.describe("Register flow tests", () => {
 
   test("Create new account - check required fields", async ({ page }) => {
     const registerPage = new RegisterPage(page);
+    const fieldError = "This field is required";
 
     await registerPage.goTo();
     await registerPage.saveButton.click();
-    await expect(registerPage.usernameInput).toHaveText(
-      "This field is required"
-    );
-    await expect(registerPage.emailInputError).toHaveText(
-      "This field is required"
-    );
-    await expect(registerPage.passwordInputError).toHaveText(
-      "This field is required"
-    );
-    await expect(registerPage.confirmPasswordInputError).toHaveText(
-      "This field is required"
-    );
+    await expect(registerPage.usernameInput).toHaveText(fieldError);
+    await expect(registerPage.emailInputError).toHaveText(fieldError);
+    await expect(registerPage.passwordInputError).toHaveText(fieldError);
+    await expect(registerPage.confirmPasswordInputError).toHaveText(fieldError);
   });
 });
